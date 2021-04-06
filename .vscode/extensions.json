@@ -1,0 +1,12 @@
+{
+	"recommendations": [
+		"ryuta46.multi-command",
+		"stkb.rewrap",
+		"auchenberg.vscode-browser-preview",
+		// "tabnine.tabnine-vscode",
+		"tht13.python",
+		// "ms-python.python",
+		"james-yu.latex-workshop",
+		"analytic-signal.preview-pdf",
+	]
+}

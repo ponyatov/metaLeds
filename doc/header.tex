@@ -1,0 +1,81 @@
+% Universal LaTeX headers for e-book publications
+\documentclass[oneside,10pt]{book}
+%% mobile phone optimized
+%%% honor 3C 108 mm x 62 mm scaled 1.1 = 118.8 x 68.2
+\usepackage[paperwidth=118.8mm,paperheight=68.2mm,margin=2mm]{geometry}
+%% font setup for screen reading
+\renewcommand{\familydefault}{\sfdefault}\normalfont
+%% hyperlinks pdf style
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+% if you use colorlinks=true you can set (defaults in []):
+% linkcolor [red]
+% anchorcolor [black]
+% citecolor [green]
+% filecolor [cyan]
+% menucolor [red]
+% runcolor [cyan - same as file color]
+% urlcolor [magenta]
+% allcolors -- use this if you want to set all links to the same color
+
+%% fix heading styles for tiny paper
+% http://tug.ctan.org/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
+\usepackage[compact]{titlesec}
+% \titleformat{\chapter}{\Large\bfseries}{\thechapter.}{1em}{}
+% \titlespacing{\chapter}{0pc}{1.5ex plus .1ex minus .2ex}{1pc}
+% \titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
+% \titlespacing{\chapter}{0pc}{1.5ex plus .1ex minus .2ex}{1pc}
+
+% title page
+\usepackage{titling}
+\usepackage{multirow}
+
+% graphics
+\usepackage[pdftex]{graphicx}
+\newcommand{\fig}[2]{\noindent\includegraphics[#2]{#1}}
+
+% xcolor fixes
+\usepackage{xcolor}
+\definecolor{red}{rgb}{0.7,0,0}		% R
+\definecolor{green}{rgb}{0,0.3,0}	% G
+\definecolor{blue}{rgb}{0,0,0.7}	% B
+\definecolor{cyan}{rgb}{0,0.6,0.6}	% cyan
+\definecolor{magenta}{rgb}{0.7,0,0.7}	% magenta
+
+% relative sectioning
+\usepackage{ifthen}
+\newcounter{secdepth}\setcounter{secdepth}{0}
+\newcommand{\secup}{\addtocounter{secdepth}{1}}
+\newcommand{\secdown}{\addtocounter{secdepth}{-1}}
+\newcommand{\secrel}[1]{
+\ifthenelse{\equal{\value{secdepth}}{0}}{\part{#1}}{}
+\ifthenelse{\equal{\value{secdepth}}{-1}}{\chapter{#1}}{}
+\ifthenelse{\equal{\value{secdepth}}{-2}}{\section{#1}}{}
+\ifthenelse{\equal{\value{secdepth}}{-3}}{\subsection{#1}}{}
+\ifthenelse{\equal{\value{secdepth}}{-4}}{\subsubsection{#1}}{}
+}
+\newcommand{\secly}[1]{
+\section*{#1}
+\addcontentsline{toc}{section}{#1}
+}
+\newcommand{\subsecly}[1]{
+\subsection*{#1}
+\addcontentsline{toc}{subsection}{#1}
+}
+
+% computer-related markup: manuals, listings, CS
+
+%% listings
+\usepackage{verbatim}
+\usepackage{listings}
+
+%% OSes
+\newcommand{\win}{\texttt{Windows}}
+\newcommand{\lin}{\texttt{Linux}}
+
+%% languages
+\newcommand{\met}{\texttt{metaL}}
+
+% misc
+\newcommand{\email}[1]{$<$\href{mailto:#1}{#1}$>$}
+\newcommand{\term}[1]{\textcolor{green}{#1}}
