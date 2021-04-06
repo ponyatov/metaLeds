@@ -1,2 +1,20 @@
+\clearpage
 \secrel{Object}\label{object}\secdown
+
+For all elements in our \emph{universal data structure}, we'll use this
+\emph{base class}, which can represent objects and linked groups of them form a
+\emph{directed hypergraph}.
+
+\lst{doc/core/object0.py}{py}{base node class for \term{object graph} \ref{og}\ }
+
+The idea about this primitive element was taken from the concept of
+\term{frame}s which is more or less known from the AI domain \cite{minsky}:
+\begin{description}
+    \item[object] frame
+    \item[slot] stringy name which points to other frame as it's value
+    \item[nest] \emph{original frames lack ordering capability}, so I expanded
+    them to reflect things like AST for source code representing
+    \item[method] \emph{adds active nature} to the passive data structure
+\end{description}
+
 \secup

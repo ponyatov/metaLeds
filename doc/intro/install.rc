@@ -1,0 +1,4 @@
+$ git clone -o gh \
+    https://github.com/ponyatov/metaLeds.git ~/book
+$ cd ~/book
+$ make install

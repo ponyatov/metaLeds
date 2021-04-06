@@ -1,4 +1,26 @@
+\clearpage
 \secrel{Install /\lin/}\label{install}
 
-github: \url{https://github.com/ponyatov/metaLeds}
+\lst{doc/intro/install.rc}{sh}{clone from \gh: \url{https://github.com/ponyatov/metaLeds}}
 
+\noindent
+This project includes a set of \py\ programming environment, and \LaTeX-powered
+tools for this book editing. Currently, only \lin\ supported, but you can extend
+a set of supported OSes, and send me pull requests to this project.
+
+\clearpage
+\lst{apt.txt}{text}{Debian GNU/Linux packages: \file{apt.txt}}
+\lst{apt.dev}{text}{for book authors \& developers only: \file{apt.dev}}
+
+\clearpage
+\noindent
+The setup also includes Flask-based web service, backed with SQLite database,
+mostly for a demo of using the \mel\ concept for tiny Web apps.
+
+\medskip
+\lst{requirements.txt}{text}{used \py\ packages: requirements.txt}
+
+Also, there is the \href{https://www.dabeaz.com/ply/}{PLY parser library}
+included in case you want to brew your own custom language: \mel\ is
+\term{no-syntax language} \ref{nosyntax}, but for some cases, it will be handy
+to have some DSLs above it.

@@ -1,3 +1,5 @@
 code meld
 sqlitebrowser
-texlive-latex-extra ghostscript xpdf
+
+texlive-latex-extra texlive-lang-cyrillic python3-pygments
+ghostscript xpdf

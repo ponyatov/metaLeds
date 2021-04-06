@@ -24,16 +24,18 @@ PY      = bin/python3
 PIP     = bin/pip3
 PEP     = bin/autopep8
 PYT     = bin/pytest
-TEX     = pdflatex -halt-on-error -output-directory=$(TMP)
+TEX     = pdflatex -shell-escape -halt-on-error -output-directory=$(TMP)
 # / tool
 
 # \ src
 P      += config.py
 Y      += metaL.py test_metaL.py
-T      += doc/book.tex doc/header.tex doc/title.tex
+T      += doc/book.tex doc/header.tex doc/title.tex doc/contacts.tex
 T      += doc/intro/intro.tex doc/intro/meta.tex doc/intro/install.tex
 T      += doc/intro/ast.tex doc/intro/krr.tex doc/intro/eds.tex
 T      += doc/core/core.tex doc/core/object.tex doc/core/graph.tex
+TY     += doc/core/object0.py
+T      += doc/bib/bib.tex
 S      += $(Y) $(T)
 # / src
 
@@ -54,8 +56,9 @@ $(PEP): $(Y)
 # \ tex
 .PHONY: tex
 tex: tmp/$(MODULE).pdf
-tmp/$(MODULE).pdf: $(T)
-	$(TEX) $< && $(TEX) $<
+tmp/$(MODULE).pdf: $(T) $(TY)
+#	$(TEX) $< && $(TEX) $<
+	$(TEX) $< |tail -n5 && $(TEX) $< |tail -n5
 .PHONY: pdf
 pdf: tmp/metaL_$(REL)_$(NOW).pdf
 tmp/metaL_$(REL)_$(NOW).pdf: tmp/$(MODULE).pdf

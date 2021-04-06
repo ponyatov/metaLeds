@@ -25,6 +25,19 @@
 % \titlespacing{\chapter}{0pc}{1.5ex plus .1ex minus .2ex}{1pc}
 % \titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
 % \titlespacing{\chapter}{0pc}{1.5ex plus .1ex minus .2ex}{1pc}
+%% toc styling
+\usepackage{tocloft}
+\renewcommand{\cftbeforetoctitleskip}{0pt}
+\renewcommand{\cftaftertoctitleskip}{0pt}
+
+
+% Cyrillization
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+%% \usepackage[cp1251]{inputenc}
+% \usepackage[english,russian]{babel}
+\usepackage[english]{babel}
+% \usepackage{indentfirst}
 
 % title page
 \usepackage{titling}
@@ -33,6 +46,7 @@
 % graphics
 \usepackage[pdftex]{graphicx}
 \newcommand{\fig}[2]{\noindent\includegraphics[#2]{#1}}
+\newcommand{\bibfig}[1]{\noindent\includegraphics[height=.72\textheight]{doc/bib/#1}}
 
 % xcolor fixes
 \usepackage{xcolor}
@@ -41,6 +55,7 @@
 \definecolor{blue}{rgb}{0,0,0.7}	% B
 \definecolor{cyan}{rgb}{0,0.6,0.6}	% cyan
 \definecolor{magenta}{rgb}{0.7,0,0.7}	% magenta
+\definecolor{lstcolor}{rgb}{0.8,0.9,0.9} % listings
 
 % relative sectioning
 \usepackage{ifthen}
@@ -67,15 +82,55 @@
 
 %% listings
 \usepackage{verbatim}
-\usepackage{listings}
+% % \usepackage{courier}
+\usepackage[cachedir=tmp,newfloat]{minted}
+\usemintedstyle{VS}
+% \renewcommand{\listingscaption}{\#}
+\usepackage{caption}
+\setlength\abovecaptionskip{+.3\baselineskip}
+\setlength\belowcaptionskip{-1.5\baselineskip}
+% https://stackoverflow.com/a/30486385/2134384
+% https://ru.overleaf.com/learn/latex/Code_Highlighting_with_minted
+% https://texdoc.org/serve/minted.pdf/0
+% http://aakinshin.blogspot.com/2014/01/latex-minted.html
+\setminted{
+    linenos=true,
+    % bgcolor=lstcolor
+    frame=lines,
+    fontsize=\normalsize,
+    % basicstyle=\scriptsize\ttfamily
+    % caption=\#
+}
+% \renewcommand{\listoflistingscaption}{listings \& files}
+% % \renewcommand{\cftbeforelistoflistingstitleskip}{0pt}
+% \usepackage{float}
+\newcommand{\lst}[3]{
+    \noindent
+    % \begin{minipage}{\linewidth}
+    % \begin{listing}[!h]
+        % \begin{minipage}{\linewidth}
+            \captionof{listing}{#3}
+            % \caption{#3}
+            \inputminted{#2}{#1}
+        % \end{minipage}
+    % \end{listing}
+    % \end{minipage}
+}
 
 %% OSes
 \newcommand{\win}{\texttt{Windows}}
 \newcommand{\lin}{\texttt{Linux}}
 
 %% languages
-\newcommand{\met}{\texttt{metaL}}
+\newcommand{\mel}{\texttt{metaL}}
+\newcommand{\py}{\texttt{Python}}
+
+%% programs
+\newcommand{\gh}{GitHub}
+
 
 % misc
 \newcommand{\email}[1]{$<$\href{mailto:#1}{#1}$>$}
 \newcommand{\term}[1]{\textcolor{green}{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\class}[1]{\textbf{#1}}

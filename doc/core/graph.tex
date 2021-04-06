@@ -1,2 +1,44 @@
-\secrel{Object Graph}\label{graph}\secdown
-\secup
+\clearpage
+\secrel{Object (hyper)Graph}\label{og}
+
+Groups of linked \class{Object}s \ref{object}\ form a \term{cyclic directed hypergraph}.
+
+\begin{itemize}
+    \item \url{https://en.wikipedia.org/wiki/Hypergraph}
+\end{itemize}
+
+When we speak about using \mel's \term{object graph} as a base for some
+\term{object/graph database}, it is important to point on the difference between
+other graph databases and this \term{hypergraph database}: \emph{there is no
+ability to add attributes to edges between nodes}.
+
+On the other side, this \term{object hypergraph} has a big advantage: \emph{this
+data model is totally native to any modern programming language}:
+\begin{itemize}
+
+    \item objects (frames) and their types can be mapped directly to OOP objects
+    and classes correspondingly
+
+    \item edges between nodes are just low-level pointers in machine memory
+
+    \item links in this hypergraph have a few notable properties:
+    \begin{enumerate}
+        \item \term{object-bound locality}\ --- you can not address any graph
+        edges until you don't fetch the \term{origin object} which \term{owns}
+        them
+        \item \term{unidirectional}\ --- no one object knows about other objects
+        which references to him
+    \end{enumerate}
+
+    \item every object (hypergraph node) can have arbitrary methods, which
+    provides an ability to use hypergraph as a \term{universal program
+    representation}:
+    \begin{enumerate}
+        \item \href{https://en.wikipedia.org/wiki/Homoiconicity}{homoiconicity}
+        there is no difference between \textbf{program = data}
+        \item subgraph executed as a program can manipulate other programs
+        (including itself) as a generic data structure, the same way as any
+        other data
+    \end{enumerate}
+
+\end{itemize}
