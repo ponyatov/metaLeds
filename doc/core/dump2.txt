@@ -1,0 +1,10 @@
+<object:hello> @7f81578bf748
+        0: <object:hello> @7f81578bf748 _/
+<object:hello> @7f81578bf748
+        0: <object:hello> @7f81578bf748 _/
+        1: <object:world> @7f815786f208
+<object:hello> @7f81578bf748
+        object = <object:left> @7f81578bf780
+        right = <object:right> @7f81578534a8
+        0: <object:hello> @7f81578bf748 _/
+        1: <object:world> @7f815786f208

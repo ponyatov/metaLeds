@@ -12,9 +12,14 @@ The idea about this primitive element was taken from the concept of
 \begin{description}
     \item[object] frame
     \item[slot] stringy name which points to other frame as it's value
+    \item[attributes] objects fields are hidden\\
+    some \term{host language}s\note{the programming language you are using for
+    \mel\ method /\py\ in our case/}\ do not let to use arbitrary object fields
+    and add them randomly at runtime, thats why slots required
     \item[nest] \emph{original frames lack ordering capability}, so I expanded
-    them to reflect things like AST for source code representing
-    \item[method] \emph{adds active nature} to the passive data structure
+    them to reflect things like AST for source code representing \ref{ast}
+    \item[method] \emph{adds active nature} to the data structure thus it can be
+    executed and also transform itself \ref{eds}
 \end{description}
 
 \secup

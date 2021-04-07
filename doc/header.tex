@@ -84,7 +84,8 @@
 \usepackage{verbatim}
 % % \usepackage{courier}
 \usepackage[cachedir=tmp,newfloat]{minted}
-\usemintedstyle{VS}
+% \usemintedstyle{VS}
+\usemintedstyle{xcode}
 % \renewcommand{\listingscaption}{\#}
 \usepackage{caption}
 \setlength\abovecaptionskip{+.3\baselineskip}
@@ -131,6 +132,8 @@
 
 % misc
 \newcommand{\email}[1]{$<$\href{mailto:#1}{#1}$>$}
+\newcommand{\note}[1]{\footnote{\,#1}}
 \newcommand{\term}[1]{\textcolor{green}{#1}}
 \newcommand{\file}[1]{\texttt{#1}}
 \newcommand{\class}[1]{\textbf{#1}}
+\newcommand{\var}[1]{\textbf{#1}}

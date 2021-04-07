@@ -1,10 +1,10 @@
 class Object:
     def __init__(self,V):
-        # scalar value: name, string, number,..
+        ## scalar value: name, string, number,..
         self.value = V
-        # slot{}s = attributes = associative array = env = map
+        ## associative array = environment = hash map
         self.slot  = {}
-        # nest[]ed = ordered container = vector = stack = AST
+        ## ordered container = vector = stack = nested ASTs
         self.nest  = []
-        # global identifier: to distinct and address objects
+        ## global identifier: to distinct and address objects
         self.gid   = id(self)

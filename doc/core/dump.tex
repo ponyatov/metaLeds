@@ -1,0 +1,31 @@
+\secrel{Dump}\label{dump}
+
+\lst{doc/core/dump0.py}{py}{HelloWorld hypergraph}
+
+As you can see here, an object was created, but we have no handy method to see
+it in a human-readable form. If we want to work with object graphs comfortably,
+at least we need the ability to get have some \term{text \var{dump}} for any
+subgraph.
+
+The natural way to do it is to start with some (root) node and traverse an
+object graph recursively. To display its topology we can use \var{pad}ding which
+is proportional to the distance from a root node to the current node and is
+equal to the recursion \var{depth}.
+
+\clearpage
+\lst{doc/core/dump1.py}{py}{tree-like text dump methods in \class{Object}}
+
+This code will not work until the next section, but for the short: here we use
+push operator \verb|//| and left \verb|<<| \note{assign slot name by type tag:
+$A<<B \rightarrow A[B.tag]=B \Rightarrow A[object] = left $} and right \verb|>>|
+\note{assign slot name by value: $A>>B \rightarrow A[B.val]=B \Rightarrow
+A[right] = right $} slot assignments.
+
+\lst{doc/core/dump2.py}{py}{dumps for operators \ref{ops}}
+\clearpage
+You can see \verb|_/| markers, which points cyclic references to objects which
+were dumped earlier. Since any hypergraph node can point to any other node
+including itself, there is a problem with cycles in a graph.\note{for dumps it
+was solved easily, but for other algorithms this can be a big problem (GC)}
+
+\lst{doc/core/dump2.txt}{text}{recursive dumps}

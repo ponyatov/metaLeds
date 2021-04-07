@@ -34,9 +34,12 @@ T      += doc/book.tex doc/header.tex doc/title.tex doc/contacts.tex
 T      += doc/intro/intro.tex doc/intro/meta.tex doc/intro/install.tex
 T      += doc/intro/ast.tex doc/intro/krr.tex doc/intro/eds.tex
 T      += doc/core/core.tex doc/core/object.tex doc/core/graph.tex
-TY     += doc/core/object0.py
+TS     += doc/core/object0.py
+T      += doc/core/dump.tex doc/core/operator.tex
+TS     += doc/core/dump0.py doc/core/dump1.py
+TS     += doc/core/dump2.py doc/core/dump2.txt
 T      += doc/bib/bib.tex
-S      += $(Y) $(T)
+S      += $(Y) $(T) $(TS)
 # / src
 
 # \ all
@@ -56,14 +59,15 @@ $(PEP): $(Y)
 # \ tex
 .PHONY: tex
 tex: tmp/$(MODULE).pdf
-tmp/$(MODULE).pdf: $(T) $(TY)
+tmp/$(MODULE).pdf: $(T) $(TS)
 #	$(TEX) $< && $(TEX) $<
 	$(TEX) $< |tail -n5 && $(TEX) $< |tail -n5
 .PHONY: pdf
 pdf: tmp/metaL_$(REL)_$(NOW).pdf
 tmp/metaL_$(REL)_$(NOW).pdf: tmp/$(MODULE).pdf
-	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
-		-dNOPAUSE -dQUIET -dBATCH -sOutputFile=$@ $<
+#	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
+#		-dNOPAUSE -dQUIET -dBATCH -sOutputFile=$@ $<
+	cp $< $@
 	cp $@ doc/metaL.pdf
 # / tex
 
