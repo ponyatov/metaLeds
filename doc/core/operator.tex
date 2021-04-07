@@ -1,6 +1,31 @@
-\clearpage
+% \clearpage
 \secrel{Operators}\label{ops}
 
-The main feature of the \mel\ method of programming is a deep integration of the
-tiny homoiconic interpreter engine into any program written in any programming
-language.
+The main feature of the \mel\note{\mel\ here can be called as \term{guest
+language}, but we'll call custom used-defined DSLs \ref{dsl}}\ method of
+programming is a deep integration of the tiny homoiconic \term{EDS-interpreter}
+engine into any program or existing software system written in any programming
+language. This means that we need to add some elements of this \term{host
+language}\note{later we'll speak about \term{code generation} into \term{target
+language}s \ref{gen}} to let its syntax parser and runtime provide us this
+integration.
+
+\medskip
+When we speak about \py, it has \term{operator overloading}, which is very handy
+to write \mel\ programs not jumping out above the Python syntax. Another
+mechanics is \term{boxing} \ref{boxing}\ which lets us mix \mel\ code with
+native literal constants and \py-specific code objects such as classes and
+functions.
+
+\clearpage
+\lst{doc/core/operator.py}{py}{\class{Object} operators}
+
+The \verb|//| operator shows the key feature of the \mel\ hypergraph:
+\begin{framed}\noindent\centering every \class{Object}\ can act as multiple
+\term{container} types simultaneously
+\end{framed}
+In contrast to other languages, even \class{Primitive} \ref{prim} types such as
+numbers and strings have the same ability to act as data containers and to have
+custom attributes and subelements. Why such a high-level decision was made is
+described more in \ref{gen}. In short, \mel\ runs as a high-level AST
+interpreter \ref{ast}.

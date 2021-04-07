@@ -12,7 +12,7 @@ def dump(self, cycle=[], depth=0, prefix='', test=False):
     if self.gid in cycle: return ret + ' _/'
     else: cycle.append(self.gid)
     # slot{}s
-    for i in self.keys():
+    for i in sorted(self.keys()):
         ret += self[i].dump(cycle, depth + 1, f'{i} = ', test)
     # nest[]ed
     for j, k in enumerate(self.nest):
