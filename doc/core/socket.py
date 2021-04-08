@@ -1,0 +1,1 @@
+class Socket(Net): pass

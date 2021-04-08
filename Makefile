@@ -30,27 +30,10 @@ TEX     = pdflatex -shell-escape -halt-on-error -output-directory=$(TMP)
 # \ src
 P      += config.py
 Y      += metaL.py test_metaL.py
-T      += doc/book.tex doc/header.tex doc/title.tex doc/contacts.tex
-T      += doc/intro/intro.tex doc/intro/meta.tex doc/intro/install.tex
-T      += doc/intro/krr.tex doc/intro/eds.tex
-T      += doc/core/core.tex doc/core/object.tex doc/core/graph.tex
-TS     += doc/core/object0.py
-T      += doc/core/dump.tex doc/core/operator.tex
-TS     += doc/core/dump0.py doc/core/dump1.py
-TS     += doc/core/dump2.py doc/core/dump2.txt
-T      += doc/core/primitive.tex doc/core/boxing.tex
-TS     += doc/core/operator.py doc/core/boxing.py
-T      += doc/core/eval.tex
-TS     += doc/core/eval.py
-T      += doc/core/match.tex
-TS     += doc/core/match.py
-T      += doc/core/container.tex doc/core/active.tex doc/core/meta.tex
-T      += doc/core/io.tex doc/core/net.tex
-T      += doc/web/web.tex doc/web/db.tex
-T      += doc/gen/ast.tex doc/gen/gen.tex doc/gen/dsl.tex
-T      += doc/iot/iot.tex doc/iot/arduino.tex doc/iot/cortexM.tex
-T      += doc/mobile/mobile.tex doc/mobile/droid.tex
-T      += doc/bib/bib.tex
+T      += doc/book.tex
+T      += $(shell find doc -type f -regex ".+.tex$$")
+TS     += $(shell find doc -type f -regex ".+.py$$")
+TS     += $(shell find doc -type f -regex ".+.txt$$")
 S      += $(Y) $(T) $(TS)
 # / src
 
@@ -85,9 +68,26 @@ tmp/metaL_$(REL)_$(NOW).pdf: tmp/$(MODULE).pdf
 
 # / doc
 doc: \
-	doc/SICP_ru.pdf
+	doc/SICP_ru.pdf doc/Dragon_ru.pdf \
+	doc/Erlang/LYSE_ru.pdf doc/Erlang/Armstrong_ru.pdf doc/Erlang/ElixirInAction.pdf \
+	doc/NimInAction.pdf doc/Python_ru.pdf
+
 doc/SICP_ru.pdf:
 	$(CURL) $@ https://newstar.rinet.ru/~goga/sicp/sicp.pdf
+doc/Dragon_ru.pdf:
+	$(CURL) $@ https://linux-doc.ru/programming/assembler/book/compilers.pdf
+
+doc/Erlang/LYSE_ru.pdf:
+	$(CURL) $@ https://github.com/mpyrozhok/learnyousomeerlang_ru/raw/master/pdf/learnyousomeerlang_ru.pdf
+doc/Erlang/Armstrong_ru.pdf:
+	$(CURL) $@ https://github.com/dyp2000/Russian-Armstrong-Erlang/raw/master/pdf/fullbook.pdf
+doc/Erlang/ElixirInAction.pdf:
+	$(CURL) $@ https://github.com/levunguyen/CGDN-Ebooks/raw/master/Java/Elixir%20in%20Action%2C%202nd%20Edition.pdf
+
+doc/NimInAction.pdf:
+	$(CURL) $@ https://nim.nosdn.127.net/MTY3NjMzODI=/bmltd18wXzE1NzYxNTc0NDQwMTdfMWU4MDhiODUtZDM0Ni00OWFlLWJjYzUtMDg2ODIxMmMzMTIw
+doc/Python_ru.pdf:
+	$(CURL) $@ http://rus-linux.net/MyLDP/BOOKS/python.pdf
 # / doc
 
 # \ install

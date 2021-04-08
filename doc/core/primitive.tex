@@ -1,7 +1,46 @@
 \clearpage
 \secrel{Primitive types}\label{prim}\secdown
-\secrel{Name}
-\secrel{String}
-\secrel{Number}
-\secrel{Integer}
+
+Most programming language descriptions traditionally start with literal elements
+such as numbers and strings. In \mel\ primitives not so primitive, as they
+inherited from the \class{Object} \ref{object} which is composited by design.
+The main property of primitive is it \textbf{evaluates into itself} and
+represents a single scalar value.
+
+\bigskip
+\lst{doc/core/primitive.py}{py}{\class{Primitive}}
+
+\clearpage
+\secrel{Nil}\label{nil}
+
+\lst{doc/core/nil.py}{py}{\class{Nil}}
+
+\secrel{Name}\label{name}
+
+\lst{doc/core/name.py}{py}{\class{Name}}
+
+\clearpage
+\secrel{String}\label{string}
+
+\lst{doc/core/string.py}{py}{\class{String}}
+
+\clearpage
+\secrel{Number}\label{number}
+
+Practical use of \mel\ shows that in most cases floating point numbers used for
+measurement results. An important thing about measurements is values have not
+only limited precision, but also can have tolerance ranges, and units. Input
+must be checked with ranges, and the user should be able to input "nullable"
+values\note{or even have a selection from set of NaN options like "no data",
+"invalid measurement",..}.
+
+\lst{doc/core/number.py}{py}{\class{Number}}
+
+% \clearpage
+\lst{doc/core/number1.py}{py}{\fn{Number.val()}}
+
+\secrel{Integer}\label{integer}
+
+\lst{doc/core/integer.py}{py}{\class{Integer}}
+
 \secup

@@ -1,4 +1,38 @@
-% \clearpage
-\secrel{Functional magic of \fn{eval}/\fn{apply}}\label{eval}\label{apply}
+\clearpage
+\secrel{Functional magic of \lisp}\secdown
 
-\cite{SICP}
+
+Consult \cite[chapter 4]{SICP} for this black magic.
+
+\lst{doc/core/eval.py}{py}{\fn{eval()}}
+\lst{doc/core/apply.py}{py}{\fn{apply()}}
+
+\clearpage
+\lisp\ is the most known magic language, and at the same time, it is also known
+as the scariest syntax language. Unsurprisingly, the bracing paren soup will
+easily scare the PHP guy.
+
+\textit{The problem is you don't see the core idea behind the esoteric syntax}.
+\lisp\ is so internally elegant because of the principle: it also uses the
+executable data structure\ --- any program is self-reflective in
+runtime\note{even if you don't use this magic}.
+
+What is really important, any construction can be evaluated as a language
+expression, any command computes some value making its work. \lisp\ interpreter
+does its work as a tiny set of special functions. In \mel, we are more close to
+the modern habits with OOP everywhere, so its \term{EDS-interpreter} is spread
+everywhere in methods that does the same.
+
+\clearpage
+\secrel{\fn{eval()}}\label{eval}
+
+The more easy part of the magic crystal is the \fn{eval()} function.
+
+In contrast to \py, \fn{eval} takes not string as a parameter, but some
+composite data structure\note{like AST \ref{ast}, nested list, parsed JSON or
+XML in memory, or hypergraph in our case}, and evaluates it in a given
+\term{environment}\note{aka \term{namespace} or \term{context}}.
+
+\secrel{\fn{apply()}}\label{apply}
+
+\secup

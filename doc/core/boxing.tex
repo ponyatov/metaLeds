@@ -1,4 +1,38 @@
 \clearpage
-\secrel{Boxing}\label{boxing}
+\secrel{Boxing and no-syntax}\label{boxing}
 
-\lst{doc/core/boxing.py}{py}{\var{Object.box()}}
+\lst{doc/core/boxing.py}{py}{\fn{Object.box()}}
+\clearpage
+
+This tiny section shows, how to automatically wrap some \py\ types to \mel\
+objects. It goes after the Primitives \ref{prim}\ because they were used for the
+demo, but the full real code you can see in the \file{metaL.py}.
+
+\medskip
+\lst{doc/core/boxing1.py}{py}{operators with boxing}
+\clearpage
+
+Boxing is important due to the \mel\ main goal: seamlessly integrate the
+\lisp-like homoiconic interpreter engine with any existing source code does not
+matter what host language was used for it.
+
+\label{nosyntax}
+
+\mel\ is especially called \term{no-syntax language} because \emph{it relies
+entirely on parser and runtime provided by a mature compiler or interpreter}. It
+also has some disadvantage: you are forced to use the real syntax of your host
+language. So, any program in metaL will look more or less different in every
+host syntax.
+
+\py\ is very good or maybe the best as a host language due to its ease of use,
+lite interpreter, dynamic nature, multiple inheritance for classes, and
+especially a huge amount of ready-to-use libraries.
+
+Boxing lets you write code very very similar to \py\ code because \mel s custom
+operators can take \py\ data types as operands, and automatically wrap them into
+(hyper)objects. It is so good, that IDEs and PEP8 autoformatter can process your
+mixed code without any problems. \note{with other less flexible host languages,
+you must call all constructors literally. \ref{ply}}
+
+\clearpage
+\lst{doc/core/boxing2.py}{py}{operators with boxing}
