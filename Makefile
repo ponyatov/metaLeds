@@ -34,11 +34,18 @@ T      += doc/book.tex
 T      += $(shell find doc -type f -regex ".+.tex$$")
 TS     += $(shell find doc -type f -regex ".+.py$$")
 TS     += $(shell find doc -type f -regex ".+.txt$$")
+TS     += $(shell find doc -type f -regex ".+.html$$")
 S      += $(Y) $(T) $(TS)
 # / src
 
 # \ all
 all: $(PY) metaL.py
+	$^ $@
+	$(MAKE) test
+web: $(PY) metaL.py
+	$^ $@
+	$(MAKE) test
+repl: $(PY) metaL.py
 	$^ $@
 	$(MAKE) test
 .PHONY: test
@@ -185,6 +192,7 @@ shadow:
 release:
 	git tag $(NOW)-$(REL)
 	git push -v && git push -v --tags
+	$(MAKE) pdf
 	$(MAKE) shadow
 .PHONY: zip
 zip:

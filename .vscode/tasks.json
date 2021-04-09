@@ -14,6 +14,30 @@
             "problemMatcher": []
         },
         {
+            "label":          "make: web",
+            "type":           "shell",
+            "command":        "make web",
+            "problemMatcher": []
+        },
+        {
+            "label":          "metaL: repl",
+            "type":           "shell",
+            "command":        "make repl",
+            "problemMatcher": []
+        },
+        {
+            "label":          "make: test",
+            "type":           "shell",
+            "command":        "make test",
+            "problemMatcher": []
+        },
+        {
+            "label":          "make: format",
+            "type":           "shell",
+            "command":        "make format",
+            "problemMatcher": []
+        },
+        {
             "label":          "make: pdf",
             "type":           "shell",
             "command":        "make pdf",

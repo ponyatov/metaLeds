@@ -105,18 +105,19 @@
 % \renewcommand{\listoflistingscaption}{listings \& files}
 % % \renewcommand{\cftbeforelistoflistingstitleskip}{0pt}
 % \usepackage{float}
-\newcommand{\lst}[3]{
+\newcommand{\lstx}[4]{
     \noindent
     % \begin{minipage}{\linewidth}
     % \begin{listing}[!h]
         % \begin{minipage}{\linewidth}
             \captionof{listing}{#3}
             % \caption{#3}
-            \inputminted{#2}{#1}
+            \inputminted[#4]{#2}{#1}
         % \end{minipage}
     % \end{listing}
     % \end{minipage}
 }
+\newcommand{\lst}[3]{\lstx{#1}{#2}{#3}{}}
 
 %% OSes
 \newcommand{\win}{\texttt{Windows}}

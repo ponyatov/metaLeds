@@ -1,0 +1,8 @@
+*           { background: #222; }
+#localtime  { position: absolute; top: 0; right: 0; }
+.online     { background: #0F03; }
+.offline    { background: #F005; }
+.error      { background: #f005; }
+.nav-logo   { min-height: 32px; max-height: 5vw; }
+#cli        { position: absolute; bottom: 0; left: 0; 
+                background: #022; font-size: 5mm;}

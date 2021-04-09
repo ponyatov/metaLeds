@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>{{glob['info']['module'].value}}</title>
+		<link rel="shortcut icon" href="/static/logo.png" type="image/png">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="/static/js/bootstrap.dark.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="/static/js/html5shiv.min.js"></script>
+			<script src="/static/js/respond.min.js"></script>
+		<![endif]-->
+		<link href="/static/highlight.css" rel="stylesheet">
+		<link href="/static/css.css" rel="stylesheet">
+		<link href="/static/{{glob['info']['module'].value}}.css" rel="stylesheet">
+		{% block head %}{% endblock %}
+	</head>
+	<style>
+		{% block style %}{% endblock %}
+	</style>
+	<body>
+		<div class="container-fluid">
+			<nav class="navbar bg-dark">
+				<a href="/dump/">
+					<img id="logo" class="nav-logo bg-dark" src="/static/logo.png">
+				</a>
+				<span class="navbar-brand bg-dark dump">{{env.head()}}</span>
+				<pre id="localtime" class="offline">date | time</pre>
+			</nav>
+		{% block body %}
+			<pre id="dump" class="dump">{{env.dump()}}</pre>
+		{% endblock %}
+		</div>
+	</body>
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/socket.io.min.js"></script>
+	<script src="/static/socket.js"></script>
+	<script src="/static/js/peg.min.js"></script>
+	<script src="/static/highlight.js"></script>
+	<script src="/static/metaL.js"></script>
+	<script src="/static/{{glob['info']['module'].value}}.js"></script>
+	{% block script %}{% endblock %}
+</html>
