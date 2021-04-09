@@ -35,7 +35,10 @@ T      += $(shell find doc -type f -regex ".+.tex$$")
 TS     += $(shell find doc -type f -regex ".+.py$$")
 TS     += $(shell find doc -type f -regex ".+.txt$$")
 TS     += $(shell find doc -type f -regex ".+.html$$")
-S      += $(Y) $(T) $(TS)
+TI     += $(shell find doc -type f -regex ".+.png$$")
+TI     += $(shell find doc -type f -regex ".+.jpeg$$")
+TI     += $(shell find doc -type f -regex ".+.jpg$$")
+S      += $(Y) $(T) $(TS) $(TI)
 # / src
 
 # \ all
@@ -61,7 +64,7 @@ $(PEP): $(Y)
 # \ tex
 .PHONY: tex
 tex: tmp/$(MODULE).pdf
-tmp/$(MODULE).pdf: $(T) $(TS)
+tmp/$(MODULE).pdf: $(T) $(TS) $(TI)
 #	$(TEX) $< && $(TEX) $<
 	$(TEX) $< |tail -n5 && $(TEX) $< |tail -n5
 .PHONY: pdf
